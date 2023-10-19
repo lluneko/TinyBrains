@@ -33,7 +33,7 @@ def update():
                                game_descriptions=description, game_links=links, game_img=img)
 
 
-@app.route('/')  # главная страница без аккаунта
+@app.route('/')  # главная страница
 def index():
     global act_name
     if act_name == 0:
