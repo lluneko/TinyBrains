@@ -17,47 +17,52 @@
             <div class="collapse navbar-collapse" id="navcol-5">
                 <form action="/search" method="POST"><input type="search"><button class="btn btn-primary btn-info" type="button"><i class="fas fa-search"></i></button></form>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: Comic Sans MS, cursive">Каталог</a></li>
-                </ul><a class="btn btn-primary btn-info" role="button" href="#"><small class="form-text"></small><i class="fas fa-user-alt" style="font-size: 21px;"></i></a>
+                    <li class="nav-item"><a class="nav-link active" href="/katalog" style="font-family: Comic Sans MS, cursive">Каталог</a></li>
+                </ul><a class="btn btn-primary btn-info" role="button" href="/account"><small class="form-text"></small><i class="fas fa-user-alt" style="font-size: 21px;"></i></a>
             </div>
         </div>
     </nav><!-- End: Navbar Right Links (Dark) -->
     <div class="card d-flex" style="width: 90%;margin: auto;background: #212529;margin-top: -3px;">
         <div class="card-body" style="height: 20%;font-family: Comic Sans MS, cursive">
-            <h4 class="card-title" style="color: var(--bs-card-bg);text-align: center;">Каталог</h4>
+            <h4 class="card-title" style="color: var(--bs-card-bg);text-align: center;"><a href="/update">Каталог <small class="form-text">(нажмите, чтобы обновить)</small></a></h4>
             <div class="row">
                 <div class="col-lg-8">
                     <ul>
-                        <li style="color: var(--bs-card-bg);">Видео-уроки</li>
-                        <li style="color: var(--bs-card-bg);">Игры</li>
-                        <li style="color: var(--bs-card-bg);">Развивающие занятия</li>
+                        <li style="color: var(--bs-card-bg);"><a class="nav-link" href="/video">Видео-уроки</a></li>
+                        <li style="color: var(--bs-card-bg);"><a class="nav-link" href="/games">Игры</a></li>
+                        <li style="color: var(--bs-card-bg);"><a class="nav-link" href="/less">Развлекательные занятия</a></li>
                     </ul>
                 </div>
                 <div class="col">
                     <ul>
-                        <li style="color: var(--bs-card-bg);">от 2-3 лет</li>
-                        <li style="color: var(--bs-card-bg);">от 3-4 лет</li>
-                        <li style="color: var(--bs-card-bg);">от 4-5 лет</li>
+                        <li style="color: var(--bs-card-bg);"><a class="nav-link" href="/two-three">от 2-3 лет</a></li>
+                        <li style="color: var(--bs-card-bg);"><a class="nav-link" href="/three-four">от 3-4 лет</a></li>
+                        <li style="color: var(--bs-card-bg);"><a class="nav-link" href="/four-five">от 4-5 лет</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card" style="margin: auto;margin-top: 40px;width: 90%;">
+    {% set names = game_names %}
+    {% set types = game_types %}
+    {% set descriptions = game_descriptions %}
+    {% set links = game_links %}
+    {% set img = game_img %}
+    {% for i in range(n)%}<div class="card" style="margin: auto;margin-top: 40px;width: 90%;">
         <div class="card-body" style="font-family: Comic Sans MS, cursive">
             <!-- Start: 1 Row 2 Columns -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-6" style="width: 70%;">
-                        <h4>Title</h4>
-                        <h6 class="text-muted mb-2">Subtitle</h6>
-                        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a href="#">Link</a>
+                        <h4>{{names[i][0]}}</h4>
+                        <h6 class="text-muted mb-2">{{types[i]}}</h6>
+                        <p>{{game_descriptions[i][0]}}</p><a href="{{ links[i][0] }}">{{ links[i][0] }}</a>
                     </div>
-                    <div class="col-md-6 col-lg-3" style="width: 30%;"><img width="100%" height="100%" src="assets/img/logo.png?h=d453bd53570ecffff89142ec6a49a793"></div>
+                    <div class="col-md-6 col-lg-3" style="width: 30%;"><img style="max-width: 100%;max-height: 100%;" src="{{ img[i][0] }}"></div>
                 </div>
             </div><!-- End: 1 Row 2 Columns -->
         </div>
-    </div>
+    </div>{% endfor %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
