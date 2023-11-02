@@ -13,7 +13,8 @@
     <!-- Start: Navbar Right Links (Dark) -->
     <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3" style="font-family: Comic Sans MS, cursive">
         <div class="container"><img width="39" height="37" src="/static/assets/img/logo.png?h=daa84da78266e2699fd3a039325fa667"><a class="navbar-brand d-flex align-items-center" href="/"><span>GamePoisk</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-5"><input type="search"><button class="btn btn-primary btn-info" type="button"><i class="fas fa-search"></i></button>
+            <div class="collapse navbar-collapse" id="navcol-5">
+                <form action="/search" method="POST"><input type="search" name="sear"><button class="btn btn-primary btn-info" type="button"><i class="fas fa-search"></i></button></form>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="/katalog">Каталог</a></li>
                 </ul><a class="btn btn-primary btn-info" role="button" href="/account"><small class="form-text"></small><i class="fas fa-user-alt" style="font-size: 21px;"></i></a>
