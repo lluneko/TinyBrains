@@ -13,13 +13,14 @@
 <body style="background: url(&quot;/static/assets/img/background.png?h=674b91d7100608718dc171d6f56f675f&quot;), rgb(205,205,205);border-style: none;height: 756px;font-family: Andika, sans-serif;">
     <!-- Start: Navbar Right Links (Dark) -->
     <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
-        <div class="container"><img width="39" height="37" src="/static/assets/img/logo.png?h=a3508ac724451b4d052b8cd6c91afcda"><a class="navbar-brand d-flex align-items-center" href="#"><span style="color: #FEF6EB; font-family: Comic Sans MS, cursive">GamePoisk</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-5"><input type="search"><button class="btn btn-primary btn-info" type="button"><i class="fas fa-search"></i></button>
+        <div class="container"><img width="39" height="37" src="/static/assets/img/logo.png?h=a3508ac724451b4d052b8cd6c91afcda"><a class="navbar-brand d-flex align-items-center" href="/"><span style="color: #FEF6EB; font-family: Comic Sans MS, cursive">GamePoisk</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-5">
+                <form action="/search" method="POST"><input type="search" name="sear"><button class="btn btn-primary btn-info" type="submit"><i class="fas fa-search"></i></button></form>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#" style="color: #FEF6EB; font-family: Comic Sans MS, cursive">Каталог</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/katalog" style="color: #FEF6EB; font-family: Comic Sans MS, cursive">Каталог</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Comic Sans MS, cursive">Зарегистрироваться</a></li>
-                </ul><a class="btn btn-primary btn-info" role="button" href="#" style="font-family: Comic Sans MS, cursive">Войти</a>
+                    <li class="nav-item"><a class="nav-link" href="/singin" style="font-family: Comic Sans MS, cursive">Зарегистрироваться</a></li>
+                </ul><a class="btn btn-primary btn-info" role="button" href="/login" style="font-family: Comic Sans MS, cursive">Войти</a>
             </div>
         </div>
     </nav><!-- End: Navbar Right Links (Dark) -->
@@ -39,7 +40,7 @@
                     <td class="fs-1" style="font-weight: bold;"><br><strong>ДОБРО ПОЖАЛОВАТЬ!</strong><br></td>
                 </tr>
                 <tr class="fs-4">
-                    <td>Мы хотим представить вам сервис, предназначен для поиска информации про образовательные ресурсы для детей младшего дошкольного возраста. Здесь вы можете найти сайты, игры и не только, которые помогут вашему ребенку развиваться. Мы стараемся искать только актуальную информацию специально для Вас. Надеемся, что мы сможем дать ответ на интересующий вас вопрос!</td>
+                    <td>Мы хотим представить вам сервис, предназначенный для поиска информации про образовательные ресурсы для детей младшего дошкольного возраста. Здесь вы можете найти сайты, игры и не только, которые помогут вашему ребенку развиваться. Мы стараемся искать только актуальную информацию специально для Вас. Надеемся, что мы сможем дать ответ на интересующий вас вопрос!</td>
                 </tr>
                 <tr class="fs-4">
                     <td style="border-style: none;">— Жаль, мы встретились так поздно…<br>— Чудесно, что мы встретились вообще.</td>
@@ -56,8 +57,8 @@
                                         <h2 class="fw-bold mb-2">Начать поиск -&gt;</h2>
                                     </div>
                                     <form class="d-flex justify-content-center flex-wrap my-2" method="post">
-                                        <div class="my-2"><input class="form-control form-control-lg" type="search"></div>
-                                        <div class="my-2"><button class="btn btn-primary btn-lg btn-info" type="button"><i class="fas fa-search"></i></button></div>
+                                        <form action="/search" method="POST"><div class="my-2"><input class="form-control form-control-lg" type="search" name="sear"></div>
+                                            <div class="my-2"><button class="btn btn-primary btn-lg btn-info" type="submit"><i class="fas fa-search"></i></button></div></form>
                                     </form>
                                 </div>
                             </div>
