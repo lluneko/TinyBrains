@@ -103,6 +103,67 @@ def search():
             return render_template('fail_acc.html', form_name=act_name)
 
 
+@app.route('/searchh', methods=['GET', 'POST'])  # нижний поиск и переход в каталог
+def searchh():
+    global act_name, act_pass
+    sc = request.form['sear1']
+    db_file = 'db/users_base.sqlite'
+    con = sqlite3.connect(db_file)
+    cur = con.cursor()
+    if act_name != 0 and act_pass != 0:
+        old_his = cur.execute(f"SELECT history FROM users WHERE name = '{act_name}' AND password = '{act_pass}'").fetchall()
+        if str(old_his[0][0]) != 'None':
+            new_his = str(old_his[0][0]) + ', ' + sc
+        else:
+            new_his = sc
+        data = (new_his, act_name, act_pass)
+        cur.execute("UPDATE users SET history = ? WHERE name = ? AND password = ?", data)
+        con.commit()
+    cur.close()
+    db_file = 'db/sites_base.sqlite'
+    con = sqlite3.connect(db_file)
+    cur = con.cursor()
+    res_name = cur.execute(f'SELECT * FROM sites WHERE name LIKE "%{sc}%"').fetchall()
+    res_type = cur.execute(f'SELECT * FROM sites WHERE type LIKE "%{sc}%"').fetchall()
+    if res_type:
+        rows = len(cur.execute(f"SELECT * FROM sites WHERE type LIKE '%{sc}%'").fetchall())
+        titles = cur.execute(f"SELECT name FROM sites WHERE type LIKE '%{sc}%'").fetchall()
+        type__ = cur.execute(f"SELECT type FROM sites WHERE type LIKE '%{sc}%'").fetchall()
+        age = cur.execute(f"SELECT age FROM sites WHERE type LIKE '%{sc}%'").fetchall()
+        type_age = [type__[i][0] + ', ' + age[i][0] for i in range(len(type__))]
+        links = cur.execute(f"SELECT link FROM sites WHERE type LIKE '%{sc}%'").fetchall()
+        img = cur.execute(f"SELECT img FROM sites WHERE type LIKE '%{sc}%'").fetchall()
+        description = cur.execute(f"SELECT descrip FROM sites WHERE type LIKE '%{sc}%'").fetchall()
+        if act_name == 0:
+            return render_template('catalog.html', n=rows, game_names=titles, game_types=type_age,
+                                   game_descriptions=description, game_links=links, game_img=img)
+        else:
+            return render_template('catalog_acc.html', form_name=act_name, n=rows, game_names=titles,
+                                   game_types=type_age,
+                                   game_descriptions=description, game_links=links, game_img=img)
+    if res_name:
+        rows = len(cur.execute(f'SELECT * FROM sites WHERE name LIKE "%{sc}%"').fetchall())
+        titles = cur.execute(f'SELECT name FROM sites WHERE name LIKE "%{sc}%"').fetchall()
+        type__ = cur.execute(f"SELECT type FROM sites WHERE name LIKE '%{sc}%'").fetchall()
+        age = cur.execute(f"SELECT age FROM sites WHERE name LIKE '%{sc}%'").fetchall()
+        type_age = [type__[i][0] + ', ' + age[i][0] for i in range(len(type__))]
+        links = cur.execute(f"SELECT link FROM sites WHERE name LIKE '%{sc}%'").fetchall()
+        img = cur.execute(f"SELECT img FROM sites WHERE name LIKE '%{sc}%'").fetchall()
+        description = cur.execute(f"SELECT descrip FROM sites WHERE name LIKE '%{sc}%'").fetchall()
+        if act_name == 0:
+            return render_template('catalog.html', n=rows, game_names=titles, game_types=type_age,
+                                   game_descriptions=description, game_links=links, game_img=img)
+        else:
+            return render_template('catalog_acc.html', form_name=act_name, n=rows, game_names=titles,
+                                   game_types=type_age,
+                                   game_descriptions=description, game_links=links, game_img=img)
+    if res_name is not True and res_type is not True:
+        if act_name == 0:
+            return render_template('fail_search.html')
+        else:
+            return render_template('fail_acc.html', form_name=act_name)
+
+
 @app.route('/login')  # страница авторизации
 def login():
     return render_template('loginpage.html', fail_log='')
