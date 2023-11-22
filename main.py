@@ -338,7 +338,11 @@ def foo():
     global act_name, act_pass
     check = ''
     bar = request.form['login']
-    bur = request.form['password']
+    bur = request.form['password1']
+    ber = request.form['password2']
+    if bur != ber:
+        check = 'Пароли не совпадают, попробуйте снова.'
+        return render_template('signinpage.html', fail_sign=check)
     if len(bar) < 1:
         if len(bur) < 8:
             return render_template('signinpage.html', fail_sign='Пароль и логин слишком короткие')
@@ -363,7 +367,11 @@ def you():
     global act_name, act_pass
     check = ''
     bar = request.form['login']
-    bur = request.form['password']
+    bur = request.form['password1']
+    ber = request.form['password2']
+    if bur != ber:
+        check = 'Пароли не совпадают, попробуйте снова.'
+        return render_template('loginpage.html', fail_log=check)
     from data import db_session
     db_session.global_init("db/users_base.sqlite")
     session = db_session.create_session()
