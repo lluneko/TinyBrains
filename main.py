@@ -177,8 +177,8 @@ def account():
     cur = con.cursor()
     res = cur.execute(f"SELECT history FROM users WHERE name = '{act_name}' AND password = '{act_pass}'").fetchall()
     if str(res[0][0]) != 'None':
-        return render_template('accountswitch.html', form_name=act_name, his=res[0][0])
-    return render_template('accountswitch.html', form_name=act_name, his='История отсутствует')
+        return render_template('accountswith.html', form_name=act_name, his=res[0][0])
+    return render_template('accountswith.html', form_name=act_name, his='История отсутствует')
 
 
 @app.route('/signin')  # страница регистрации
