@@ -212,14 +212,14 @@ def video():
     db_file = 'db/sites_base.sqlite'
     con = sqlite3.connect(db_file)
     cur = con.cursor()
-    rows = len(cur.execute("SELECT * FROM sites WHERE type in ('Видео-уроки')").fetchall())
-    titles = cur.execute("SELECT name FROM sites WHERE type in ('Видео-уроки')").fetchall()
-    type__ = cur.execute("SELECT type FROM sites WHERE type in ('Видео-уроки')").fetchall()
-    age = cur.execute("SELECT age FROM sites WHERE type in ('Видео-уроки')").fetchall()
+    rows = len(cur.execute("SELECT * FROM sites WHERE type in ('Видео и аудио уроки')").fetchall())
+    titles = cur.execute("SELECT name FROM sites WHERE type in ('Видео и аудио уроки')").fetchall()
+    type__ = cur.execute("SELECT type FROM sites WHERE type in ('Видео и аудио уроки')").fetchall()
+    age = cur.execute("SELECT age FROM sites WHERE type in ('Видео и аудио уроки')").fetchall()
     type_age = [type__[i][0] + ', ' + age[i][0] for i in range(len(type__))]
-    links = cur.execute("SELECT link FROM sites WHERE type in ('Видео-уроки')").fetchall()
-    img = cur.execute("SELECT img FROM sites WHERE type in ('Видео-уроки')").fetchall()
-    description = cur.execute("SELECT descrip FROM sites WHERE type in ('Видео-уроки')").fetchall()
+    links = cur.execute("SELECT link FROM sites WHERE type in ('Видео и аудио уроки')").fetchall()
+    img = cur.execute("SELECT img FROM sites WHERE type in ('Видео и аудио уроки')").fetchall()
+    description = cur.execute("SELECT descrip FROM sites WHERE type in ('Видео и аудио уроки')").fetchall()
     if act_name == 0:
         return render_template('catalog.html', n=rows, game_names=titles, game_types=type_age,
                                game_descriptions=description, game_links=links, game_img=img)
