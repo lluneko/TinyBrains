@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" style="font-family: Comic Sans MS, cursive">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>withacc</title>
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css?h=f1a8fe9e98944b9d682ec5c3efac8f17">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="/static/assets/css/styles.min.css?h=94055d98a62c6f32248989e45e2194a5">
+</head>
+
+<body style="background: url(&quot;/static/assets/img/background.png?h=c2e5e5fd2b2dcee1a97c684d697be637&quot;);height: 756px;font-family: Andika, sans-serif;">
+    <!-- Start: Navbar Right Links (Dark) -->
+    <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
+        <div class="container"><img width="39" height="37" src="/static/assets/img/logo.png?h=a3508ac724451b4d052b8cd6c91afcda"><a class="navbar-brand d-flex align-items-center" href="/"><span style="font-family: Comic Sans MS, cursive">TinyBrains</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-5">
+                <form action="/search" method="POST"><input type="search" name="sear"><button class="btn btn-primary btn-info" type="submit"><i class="fas fa-search"></i></button></form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/katalog" style="font-family: Comic Sans MS, cursive">Каталог</a></li>
+                </ul><a class="btn btn-primary btn-info" role="button" href="/account"><small class="form-text" style="font-family: Comic Sans MS, cursive;color: black">{{ form_name }}</small><i class="fas fa-user-alt" style="font-size: 21px;"></i></a>
+            </div>
+        </div>
+    </nav><!-- End: Navbar Right Links (Dark) -->
+    <div class="table-responsive border-0 d-lg-flex" style="width: 80%;margin: auto;">
+        <table class="table table-borderless">
+            <thead class="border-0" style="border-style: none;">
+                <tr class="border-0">
+                    <th class="border-0">&nbsp;&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="fs-1" style="font-weight: bold;"><br><strong>ДОБРО ПОЖАЛОВАТЬ!</strong><br></td>
+                </tr>
+                <tr class="fs-4">
+                    <td>Мы хотим представить вам сервис, предназначен для поиска информации про образовательные ресурсы для детей младшего дошкольного возраста. Здесь вы можете найти сайты, игры и не только, которые помогут вашему ребенку развиваться. Мы стараемся искать только актуальную информацию специально для Вас. Надеемся, что мы сможем дать ответ на интересующий вас вопрос!</td>
+                </tr>
+                <tr class="fs-4">
+                    <td style="border-style: none;">— Жаль, мы встретились так поздно…<br>— Чудесно, что мы встретились вообще.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<div class="text-white bg-dark border rounded border-0 border-light d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5">
+                            <div class="text-center text-lg-start py-3 py-lg-1">
+                                <h2 class="fw-bold mb-2">Начать поиск -&gt;</h2>
+                            </div>
+                             <form action="/searchh" method="POST"><div class="my-2"><input class="form-control form-control-lg" type="search" name="sear1"></div>
+                                    <div class="my-2"><button class="btn btn-primary btn-lg btn-info" type="submit" style="height: 100%; width: 100%"><i class="fas fa-search"></i></button></div></form>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
